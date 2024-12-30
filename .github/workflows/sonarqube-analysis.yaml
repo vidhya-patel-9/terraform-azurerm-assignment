@@ -1,6 +1,9 @@
 name: SonarQube Analysis
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
@@ -28,5 +31,9 @@ jobs:
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
     - name: Generate SonarQube Report
+      env:
+        SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
+        SONAR_API_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       run: |
         python .github/scripts/generate_sonarqube_report.py
