@@ -1,0 +1,17 @@
+{
+    "projectStatus": {
+        "status": "OK",
+        "conditions": [
+            {
+                "metricKey": "bugs",
+                "actualValue": "0",
+                "status": "OK"
+            },
+            {
+                "metricKey": "vulnerabilities",
+                "actualValue": "0",
+                "status": "OK"
+            }
+        ]
+    }
+}
