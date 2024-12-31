@@ -41,7 +41,7 @@ jobs:
           python .github/scripts/generate_sonarqube_report.py
 
       - name: Upload SonarQube Report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: SonarQube_Report
           path: sonarqube_report.pdf
