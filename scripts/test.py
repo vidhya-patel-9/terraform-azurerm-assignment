@@ -1,33 +1,32 @@
-# good_code.py
+from pytube import YouTube
 
-def add(a: int, b: int) -> int:
-    """Returns the sum of a and b."""
-    return a + b
+# Where to save
+SAVE_PATH = "E:/"  # to_do
 
-def subtract(a: int, b: int) -> int:
-    """Returns the difference between a and b."""
-    return a - b
+# Links of the videos to be downloaded
+links = ["https://www.youtube.com/watch?v=xWOoBJUqlbI",
+         "https://www.youtube.com/watch?v=xWOoBJUqlbI"]
 
-def multiply(a: int, b: int) -> int:
-    """Returns the product of a and b."""
-    return a * b
-
-def divide(a: int, b: int) -> float:
-    """Returns the quotient of a divided by b. Raises ValueError if b is zero."""
-    if b == 0:
-        raise ValueError("Cannot divide by zero")
-    return a / b
-
-def main():
-    """Main function to demonstrate arithmetic operations."""
+for link in links:
     try:
-        x, y = 10, 5
-        print(f"Add: {add(x, y)}")
-        print(f"Subtract: {subtract(x, y)}")
-        print(f"Multiply: {multiply(x, y)}")
-        print(f"Divide: {divide(x, y)}")
-    except ValueError as e:
-        print(f"Error: {e}")
+        # Object creation using YouTube
+        # which was imported in the beginning
+        yt = YouTube(link)
+    except:
+        # Handle exception
+        print("Connection Error")
 
-if __name__ == "__main__":
-    main()
+    # Get all streams and filter for mp4 files
+    mp4_streams = yt.streams.filter(file_extension='mp4').all()
+
+    # Get the video with the highest resolution
+    d_video = mp4_streams[-1]
+
+    try:
+        # Download the video
+        d_video.download(output_path=SAVE_PATH)
+        print('Video downloaded successfully!')
+    except:
+        print("Some Error!")
+
+print('Task Completed!')
