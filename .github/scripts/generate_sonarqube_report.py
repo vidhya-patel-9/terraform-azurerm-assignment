@@ -7,6 +7,10 @@ from reportlab.pdfgen import canvas
 SONAR_URL = os.getenv("SONAR_HOST_URL")
 SONAR_API_TOKEN = os.getenv("SONAR_API_TOKEN")
 PROJECT_KEY = os.getenv("SONAR_PROJECT_KEY")
+print(f"SonarQube URL: {SONAR_URL}")
+print(f"SONAR API TOKEN: {SONAR_API_TOKEN}")
+print(f"PROJECT KEY: {PROJECT_KEY}")
+
 
 # Function to fetch data from SonarQube
 def fetch_sonar_data():
