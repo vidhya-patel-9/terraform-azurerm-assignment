@@ -7,10 +7,9 @@ from reportlab.pdfgen import canvas
 SONAR_URL = os.getenv("SONAR_HOST_URL")
 SONAR_API_TOKEN = os.getenv("SONAR_API_TOKEN")
 PROJECT_KEY = os.getenv("SONAR_PROJECT_KEY")
-print(f"SonarQube URL: {SONAR_URL}")
-print(f"SONAR API TOKEN: {SONAR_API_TOKEN}")
-print(f"PROJECT KEY: {PROJECT_KEY}")
 
+if not SONAR_URL or not SONAR_API_TOKEN or not PROJECT_KEY:
+    raise ValueError("Missing required environment variables: SONAR_HOST_URL, SONAR_API_TOKEN, SONAR_PROJECT_KEY")
 
 # Function to fetch data from SonarQube
 def fetch_sonar_data():
